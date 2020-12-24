@@ -13,24 +13,15 @@ const port = process.env.PORT || 3000
 var url = 'https://picsum.photos/v2/list?page=1&limit=100';
 
 
-// Define paths for Express config
 const publicDirectoryPath = path.join(__dirname, './public')
 const viewsPath = path.join(__dirname, './views')
 const partialsPath = path.join(__dirname, './views/layouts')
 
-// install = npm i hbs@4.0.1
-// Setup handlebars engine and views location
 app.set('view engine', 'hbs')
 app.set('views', viewsPath)
 hbs.registerPartials(partialsPath)
 
-// Setup static directory to serve
 app.use(express.static(publicDirectoryPath))
-
-app.get('/', (req, res) => {
-    res.render('home');
-});
-
 
 var cached_images = {};
 https.get(url, function(res){
@@ -51,9 +42,9 @@ https.get(url, function(res){
                 "download_url": response[i].download_url
             };
         }
-        // app.get('/', function(req, res){
-        //     res.sendFile('./public/views/index.hbs',{root: __dirname});
-        // });
+        app.get('/', (req, res) => {
+            res.render('home');
+        });
         app.get('/images', function(req, res) {
             var keys = Object.keys(cached_images);
             var result = [];
