@@ -24,6 +24,8 @@ hbs.registerPartials(partialsPath)
 app.use(express.static(publicDirectoryPath))
 
 var cached_images = {};
+var id_array = [];
+
 https.get(url, function(res){
     var body = '';
 
@@ -41,10 +43,25 @@ https.get(url, function(res){
                 "url": response[i].url, 
                 "download_url": response[i].download_url
             };
+            id_array.push(response[i].id);
         }
+        
+        console.log('get images data')
         app.get('/', (req, res) => {
-            res.render('home');
-        });
+            console.log(cached_images);
+            res.render('home')});
+        
+        app.get('/getNextChunk', function (req, res) {
+            const randomImage = [];
+
+            for (let i = 0; i < 5; i++) {
+                const randomNum = id_array[Math.floor(Math.random() * id_array.length)];
+                randomImage.push(cached_images[randomNum]);
+                //cached_images.splice(randomNum, 1);
+            }
+            //res.status(200).json(randomImage);
+            res.render('home', {images: randomImage});
+        })
         app.get('/images', function(req, res) {
             var keys = Object.keys(cached_images);
             var result = [];
@@ -60,13 +77,14 @@ https.get(url, function(res){
                 res.send({"error": "Image not found"})
             }
         });
-
         app.listen(port, () => {
             console.log('Server is up on port ' + port)
         })
     });
+    res.on('error', function(e){
+        console.log("Got an error: ", e);
+  }); 
 }).on('error', function(e){
       console.log("Got an error: ", e);
 });
-
 
