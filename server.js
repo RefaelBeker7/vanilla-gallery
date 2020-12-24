@@ -3,10 +3,34 @@ var app = express();
 var path = require('path');
 var https = require('https');
 var fs = require('fs');
+const hbs = require('hbs');
 
-const PORT=8080; 
+var app = express(); 
+
+const port = process.env.PORT || 3000
+//app.use( '/' , express.static(path.join(__dirname, 'public')));        
 
 var url = 'https://picsum.photos/v2/list?page=1&limit=100';
+
+
+// Define paths for Express config
+const publicDirectoryPath = path.join(__dirname, './public')
+const viewsPath = path.join(__dirname, './views')
+const partialsPath = path.join(__dirname, './views/layouts')
+
+// install = npm i hbs@4.0.1
+// Setup handlebars engine and views location
+app.set('view engine', 'hbs')
+app.set('views', viewsPath)
+hbs.registerPartials(partialsPath)
+
+// Setup static directory to serve
+app.use(express.static(publicDirectoryPath))
+
+app.get('/', (req, res) => {
+    res.render('home');
+});
+
 
 var cached_images = {};
 https.get(url, function(res){
@@ -27,12 +51,9 @@ https.get(url, function(res){
                 "download_url": response[i].download_url
             };
         }
-        var app = express(); 
-        app.use( '/' , express.static(path.join(__dirname, 'public')));
-        
-        app.get('/', function(req, res){
-            res.sendFile('./public/views/index.html',{root: __dirname});
-        });
+        // app.get('/', function(req, res){
+        //     res.sendFile('./public/views/index.hbs',{root: __dirname});
+        // });
         app.get('/images', function(req, res) {
             var keys = Object.keys(cached_images);
             var result = [];
@@ -48,15 +69,13 @@ https.get(url, function(res){
                 res.send({"error": "Image not found"})
             }
         });
-        app.listen(3000);                       
-        console.log('Listening on port 3000...');
+
+        app.listen(port, () => {
+            console.log('Server is up on port ' + port)
+        })
     });
 }).on('error', function(e){
       console.log("Got an error: ", e);
 });
-
-
-
-
 
 
