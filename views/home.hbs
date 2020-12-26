@@ -3,73 +3,36 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Basic Gallery</title>
-	<script type="module" src="../script/script.js"></script>
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script type="module" src="../script/script.js"></script>
 </head>
 <body>
-	<h2 style="text-align:center">Gallery </h2>
-	{{#each images}}
-	<div>{{author}}</div>
-	{{/each}}
-	<div class="container">
-
-		<!-- Full-width images with number text -->
-		<div class="mySlides">
-			<div class="numbertext">1 / 5</div>
-			<img style="width:100%">
-		</div>
-		
-		<div class="mySlides">
-			<div class="numbertext">2 / 5</div>
-			<img style="width:100%">
-		</div>
-		
-		<div class="mySlides">
-			<div class="numbertext">3 / 5</div>
-			<img  style="width:100%">
-		</div>
-		
-		<div class="mySlides">
-			<div class="numbertext">4 / 5</div>
-			<img  style="width:100%">
-		</div>
-		
-		<div class="mySlides">
-			<div class="numbertext">5 / 5</div>
-			<img style="width:100%">
-		</div>
-		
-		
-		<!-- Next and previous buttons -->
-		<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-		<a class="next" onclick="plusSlides(1)">&#10095;</a>
-		
-		<!-- Image text -->
-		<div class="caption-container">
-			<p id="caption"></p>
-		</div>
-		
-		<!-- Thumbnail images -->
-		<div class="row">
-			<div class="column">
-			<img class="cursor" style="width:100%" onclick="currentSlide(1)" alt="The Woods">
-			</div>
-			<div class="column">
-			<img class="cursor" style="width:100%" onclick="currentSlide(2)" alt="Cinque Terre">
-			</div>
-			<div class="column">
-			<img class="cursor" style="width:100%" onclick="currentSlide(3)" alt="Mountains and fjords">
-			</div>
-			<div class="column">
-			<img class="cursor" style="width:100%" onclick="currentSlide(4)" alt="Northern Lights">
-			</div>
-			<div class="column">
-			<img class="cursor" style="width:100%" onclick="currentSlide(5)" alt="Nature and sunrise">
-			</div>
-			<div class="column">
-			<img class="cursor"  style="width:100%" onclick="currentSlide(6)" alt="Snowy Mountains">
-			</div>
-		</div>
-	</div>
+    <h2>Slideshow Gallery</h2>
+    <div class="container">
+         {{#each images}}
+            <div class="slide">
+                <div class="numbertext" >{{@index}} / 5</div>
+                <img src="{{download_url}}" alt="{{author}}">
+            </div>
+	    {{/each}}
+    
+    <!-- Image text -->
+    <div class="caption-container">
+        <p id="caption"></p>
+    </div>
+    
+    <!-- Next and previous button -->
+    <a class="prev">&#10094;</a>
+    <a class="next">&#10095;</a>
+     
+    <!-- Thumbnail images -->
+    <div class="thumb-bar">
+        {{#each images}}
+        <div id="{{@index}}" class="thumb-img">
+        <img class="dem cursor" src="{{download_url}}" alt="{{author}}" >
+        </div>
+        {{/each}}
+    </div>
+    </div>
 </body>
 </html>

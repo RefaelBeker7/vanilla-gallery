@@ -5,13 +5,9 @@ var https = require('https');
 var fs = require('fs');
 const hbs = require('hbs');
 
-var app = express(); 
-
 const port = process.env.PORT || 3000
-//app.use( '/' , express.static(path.join(__dirname, 'public')));        
 
 var url = 'https://picsum.photos/v2/list?page=1&limit=100';
-
 
 const publicDirectoryPath = path.join(__dirname, './public')
 const viewsPath = path.join(__dirname, './views')
@@ -47,21 +43,17 @@ https.get(url, function(res){
         }
         
         console.log('get images data')
-        app.get('/', (req, res) => {
-            console.log(cached_images);
-            res.render('home')});
         
         app.get('/getNextChunk', function (req, res) {
             const randomImage = [];
-
             for (let i = 0; i < 5; i++) {
                 const randomNum = id_array[Math.floor(Math.random() * id_array.length)];
                 randomImage.push(cached_images[randomNum]);
-                //cached_images.splice(randomNum, 1);
+                id_array.splice(randomNum, 1);
             }
-            //res.status(200).json(randomImage);
             res.render('home', {images: randomImage});
         })
+
         app.get('/images', function(req, res) {
             var keys = Object.keys(cached_images);
             var result = [];
@@ -70,6 +62,7 @@ https.get(url, function(res){
             }
             res.send(result);
         });
+
         app.get('/images/:id', function(req, res) {
             if (cached_images.hasOwnProperty(req.params.id)) {
                 res.send(cached_images[req.params.id]);

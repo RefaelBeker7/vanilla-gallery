@@ -1,96 +1,103 @@
-body {
-	background-color: #797485;
-	font-family: Arial;
-	margin: 0;
-}
-
 * {
-	box-sizing: border-box;
-}
-
-img {
-	vertical-align: middle;
-}
-
-/* Position the image container (needed to position the left and right arrows) */
-.container {
-	position: relative;
-}
-
-/* Hide the images by default */
-.mySlides {
-	display: none;
-}
-
-/* Add a pointer when hovering over the thumbnail images */
-.cursor {
-	cursor: pointer;
-}
-
-/* Next & previous buttons */
-.prev,
-.next {
-	cursor: pointer;
-	position: absolute;
-	top: 40%;
-	width: auto;
-	padding: 16px;
-	margin-top: -50px;
-	color: white;
-	font-weight: bold;
-	font-size: 20px;
-	border-radius: 0 3px 3px 0;
-	user-select: none;
-	-webkit-user-select: none;
-}
-
-/* Position the "next button" to the right */
-.next {
-	right: 0;
-	border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover,
-.next:hover {
-	background-color: rgba(0, 0, 0, 0.8);
-}
-
-/* Number text (1/3 etc) */
-.numbertext {
-	color: #f2f2f2;
-	font-size: 12px;
-	padding: 8px 12px;
-	position: absolute;
-	top: 0;
-}
-
-/* Container for image text */
-.caption-container {
-	text-align: center;
-	background-color: #222;
-	padding: 2px 16px;
-	color: white;
-}
-
-.row:after {
-	content: "";
-	display: table;
-	clear: both;
-}
-
-/* Six columns side by side */
-.column {
-	float: left;
-	width: 16.66%;
-}
-
-/* Add a transparency effect for thumnbail images */
-.demo {
-	opacity: 0.6;
-}
-
-.active,
-.demo:hover {
-	opacity: 1;
-}	  
+    box-sizing: border-box;
+  }
+  
+  body {
+	background-color: #797485;
+    font-family: Arial;
+  }
+  
+  h2 {
+    text-align: center;
+  }
+  
+  /* Position the image container */
+  .container {
+    position: relative;
+    width: 80%;
+    vertical-align: top;
+    margin-left: 10%;
+  }
+  
+  /* Hide the images by default */
+  .slide {
+    display: none;
+  }
+  
+  .slide img {
+    width: 100%;
+    height: 400px;
+    vertical-align: middle;
+  }
+  
+  /* Number text */
+  .numbertext {
+    position: absolute;
+    top: 0;
+    padding: 8px 12px;
+    font-size: 12px;
+    color: #f2f2f2;
+    background-color: #222;
+  }
+  
+  /* Container for image text */
+  .caption-container {
+    padding: 2px 16px;
+    text-align: center;
+    background-color: #222;
+    color: #fff;
+  }
+  
+  
+  
+  .prev, .next {
+    position: absolute;
+    top: 90%;
+    transform: translateY(-60%);
+    padding: 16px;
+    border-radius: 0 3px 3px 0;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.6s ease;
+  }
+  
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+  
+  .prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  
+  
+  /* Columns side by side */
+  .thumb-bar {
+    display: flex;
+    margin-left: 15%;
+  }
+  
+  .thumb-img {
+    width: 16.66%;
+  }
+  
+  .thumb-img img {
+    width: 100%;
+  }
+  
+  /* Add a pointer when hovering over the thumbnail images */
+  .cursor {
+    cursor: pointer;
+  }
+  
+  .dem {
+    opacity: 0.6;
+  }
+  
+  .active, .dem:hover {
+    opacity: 1;
+  }
