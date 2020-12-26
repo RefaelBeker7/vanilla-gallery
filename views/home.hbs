@@ -11,7 +11,12 @@
     <div class="container">
          {{#each images}}
             <div class="slide">
-                <div class="numbertext" >{{@index}} / 5</div>
+                <div class="numbertext" >
+                    <script>
+                        document.write({{@index}} + 1)
+                    </script>
+                    / 5
+                </div>
                 <img src="{{download_url}}" alt="{{author}}">
             </div>
 	    {{/each}}

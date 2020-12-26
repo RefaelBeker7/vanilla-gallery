@@ -72,9 +72,7 @@
   .prev:hover, .next:hover {
     background-color: rgba(0, 0, 0, 0.8);
   }
-  
-  
-  
+
   /* Columns side by side */
   .thumb-bar {
     display: flex;
@@ -96,6 +94,7 @@
   
   .dem {
     opacity: 0.6;
+    height: 90px;
   }
   
   .active, .dem:hover {
