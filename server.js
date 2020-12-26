@@ -13,6 +13,7 @@ const publicDirectoryPath = path.join(__dirname, './public')
 const viewsPath = path.join(__dirname, './views')
 const partialsPath = path.join(__dirname, './views/layouts')
 
+
 app.set('view engine', 'hbs')
 app.set('views', viewsPath)
 hbs.registerPartials(partialsPath)
