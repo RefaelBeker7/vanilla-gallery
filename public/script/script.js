@@ -51,3 +51,8 @@ next.addEventListener('click', nextSlide);
 thumbnails.forEach(thumbnail => thumbnail.addEventListener('click', showSlide));
 
 slideImages(slideIndex);
+
+window.setTimeout(function () {
+  window.location.reload();
+  alert("Loading new random images..")
+}, 30000);
