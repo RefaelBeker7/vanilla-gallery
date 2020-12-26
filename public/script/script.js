@@ -54,5 +54,5 @@ slideImages(slideIndex);
 
 window.setTimeout(function () {
   window.location.reload();
-  alert("Loading new random images..")
+  alert("Loading new random images..");
 }, 30000);
