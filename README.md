@@ -1,4 +1,6 @@
 # vanilla-gallery
+[![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com)
+
 [WIP] vanilla gallery project
 
 ### Heroku link
