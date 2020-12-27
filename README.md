@@ -17,7 +17,7 @@ https://vanilla-gallery-beker.herokuapp.com/getNextChunk
 3. Run the app: <br />
 ```npm start```
 
-Open url http://localhost:3000/ in your browser.
+4. Open url http://localhost:3000/getNextChunk in your browser.
 
 ### License
 MIT
