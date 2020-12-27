@@ -8,7 +8,7 @@ https://vanilla-gallery-beker.herokuapp.com/getNextChunk
 
 ### Installation & Run
 
-1. Clone the repository of Vanilla Gallery:
+1. Clone the repository of Vanilla Gallery:__
 ```$ git clone git@github.com:refaelbeker7/vanilla-gallery.git```
 
 2. Install dependencies:
