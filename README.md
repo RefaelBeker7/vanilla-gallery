@@ -1,7 +1,14 @@
 # vanilla-gallery
 [WIP] vanilla gallery project
 
+### Installation
+```npm install```
 
+### Run the app
+```npm start```
+
+### License
+MIT
 
 
 
