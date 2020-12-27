@@ -11,10 +11,10 @@ https://vanilla-gallery-beker.herokuapp.com/getNextChunk
 1. Clone the repository of Vanilla Gallery: <br />
 ```$ git clone git@github.com:refaelbeker7/vanilla-gallery.git```
 
-2. Install dependencies:
+2. Install dependencies: <br />
 ```npm install```
 
-3. Run the app:
+3. Run the app: <br />
 ```npm start```
 
 Open url http://localhost:3000/ in your browser.
