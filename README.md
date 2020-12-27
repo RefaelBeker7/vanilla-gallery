@@ -58,6 +58,6 @@ Endpoints
 
 License
 ---
-MIT
+MIT ![@RefaelBeker](https://github.com/RefaelBeker7/spring-flights-management/blob/master/Swagger.png)
 
 
