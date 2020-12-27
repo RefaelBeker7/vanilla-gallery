@@ -5,8 +5,8 @@
 https://vanilla-gallery-beker.herokuapp.com/getNextChunk
 
 
-### Installation & Run
-
+Installation & Run
+---
 1. Clone the repository of Vanilla Gallery: <br />
 ```$ git clone git@github.com:refaelbeker7/vanilla-gallery.git```
 
@@ -37,7 +37,8 @@ Endpoints
 - Description: Return a image by id in JSON
 
 
-### License
+License
+---
 MIT
 
 
