@@ -13,10 +13,28 @@ https://vanilla-gallery-beker.herokuapp.com/getNextChunk
 2. Install dependencies: <br />
 ```npm install```
 
-3. Run the app: <br />
+3. Run the application: <br />
 ```npm start```
 
 4. Open url http://localhost:3000/getNextChunk in your browser.
+
+### Endpoints
+
+/getNextChunk
+---
+- Methods: **GET**
+- Description: Gallery application
+
+/images
+---
+- Methods: **GET**
+- Description: Return 100 images in JSON
+
+/images/id
+---
+- Methods: **GET**
+- Description: Return a image by id in JSON
+
 
 ### License
 MIT
