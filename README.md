@@ -5,6 +5,25 @@
 https://vanilla-gallery-beker.herokuapp.com/getNextChunk
 
 
+### Each image element schema contains: 
+```
+{
+
+"id": "<element identifier>",
+
+"author": "<author name>",
+
+"width": <image width>,
+
+"height": <image height>,
+
+"url": "<source page image url>",
+
+"download_url": "<image url>"
+
+}
+```
+
 Installation & Run
 ---
 1. Clone the repository of Vanilla Gallery: <br />
