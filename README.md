@@ -58,6 +58,6 @@ Endpoints
 
 License
 ---
-MIT ![@RefaelBeker](https://github.com/RefaelBeker7)
+MIT [@RefaelBeker](https://github.com/RefaelBeker7)
 
 
