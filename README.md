@@ -1,7 +1,7 @@
 # vanilla-gallery
 
 [WIP] vanilla gallery project
-
+![screenshop application](https://github.com/RefaelBeker7/vanilla-gallery/blob/master/screenshot/screenshot_app.png)
 ### Heroku link
 https://vanilla-gallery-beker.herokuapp.com/getNextChunk
 
