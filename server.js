@@ -7,8 +7,6 @@ const hbs = require('hbs');
 
 const port = process.env.PORT || 3000
 
-var url = 'https://picsum.photos/v2/list?page=1&limit=100';
-
 const publicDirectoryPath = path.join(__dirname, './public')
 const viewsPath = path.join(__dirname, './views')
 const partialsPath = path.join(__dirname, './views/layouts')
@@ -19,7 +17,14 @@ app.set('views', viewsPath)
 hbs.registerPartials(partialsPath)
 
 app.use(express.static(publicDirectoryPath))
-
+/*
+ * Implement a function that fetch 100 element to public api.
+ * Store all the element in a dict while the key is the id and value is the author, width, height, url, download_url.
+ * Implement an endpoint that sends 5 random images from the dict.
+ * Implement an endpoint that receives and return the dowload_url.
+ * Implement an endpoint that is the front html.
+*/
+var url = 'https://picsum.photos/v2/list?page=1&limit=100';
 var cached_images = {};
 var id_array = [];
 
@@ -29,7 +34,6 @@ https.get(url, function(res){
     res.on('data', function(chunk){
         body += chunk;
     });
-
     res.on('end', function(){
         var response = JSON.parse(body);
         for (var i = 0; i < response.length; i++) {
