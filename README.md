@@ -1,7 +1,7 @@
 # vanilla-gallery
 
 [WIP] vanilla gallery project
-![screenshop application](https://github.com/RefaelBeker7/vanilla-gallery/blob/main/screenshot/screenshot_app.png)
+
 ### Heroku link
 https://vanilla-gallery-beker.herokuapp.com/getNextChunk
 
@@ -56,6 +56,9 @@ Endpoints
 - Methods: **GET**
 - Description: Return a image by id in JSON
 
+Screenshot
+---
+![screenshop application](https://github.com/RefaelBeker7/vanilla-gallery/blob/main/screenshot/screenshot_app.png)
 
 License
 ---
