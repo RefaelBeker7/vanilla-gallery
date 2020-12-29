@@ -4,20 +4,20 @@ var path = require('path');
 var https = require('https');
 var fs = require('fs');
 const hbs = require('hbs');
-const { getFiveImg } = require('./utils/helper')
+const { getFiveImg } = require('./utils/helper');
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3000;
 
-const publicDirectoryPath = path.join(__dirname, '../public')
-const viewsPath = path.join(__dirname, '../views')
-const partialsPath = path.join(__dirname, '../views/layouts')
+const publicDirectoryPath = path.join(__dirname, '../public');
+const viewsPath = path.join(__dirname, '../views');
+const partialsPath = path.join(__dirname, '../views/layouts');
 
 
-app.set('view engine', 'hbs')
-app.set('views', viewsPath)
-hbs.registerPartials(partialsPath)
+app.set('view engine', 'hbs');
+app.set('views', viewsPath);
+hbs.registerPartials(partialsPath);
 
-app.use(express.static(publicDirectoryPath))
+app.use(express.static(publicDirectoryPath));
 /*
  * Implement a function that fetch 100 element to public api.
  * Store all the element in a dict while the key is the id and value is the author, width, height, url, download_url.
