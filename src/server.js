@@ -4,12 +4,13 @@ var path = require('path');
 var https = require('https');
 var fs = require('fs');
 const hbs = require('hbs');
+const { getFiveImg } = require('./utils/helper')
 
 const port = process.env.PORT || 3000
 
-const publicDirectoryPath = path.join(__dirname, './public')
-const viewsPath = path.join(__dirname, './views')
-const partialsPath = path.join(__dirname, './views/layouts')
+const publicDirectoryPath = path.join(__dirname, '../public')
+const viewsPath = path.join(__dirname, '../views')
+const partialsPath = path.join(__dirname, '../views/layouts')
 
 
 app.set('view engine', 'hbs')
@@ -44,28 +45,16 @@ https.get(url, function(res){
                 "url": response[i].url, 
                 "download_url": response[i].download_url
             };
-            id_array.push(response[i].id);
         }
-        
+        id_array = Object.keys(cached_images);
         console.log('get images data')
         
         app.get('/getNextChunk', function (req, res) {
-            const randomImage = [];
-            for (let i = 0; i < 5; i++) {
-                const randomNum = id_array[Math.floor(Math.random() * id_array.length)];
-                randomImage.push(cached_images[randomNum]);
-                id_array.splice(randomNum, 1);
-            }
-            res.render('home', {images: randomImage});
+            res.render('home', {images: getFiveImg(id_array, cached_images)});
         })
 
         app.get('/images', function(req, res) {
-            var keys = Object.keys(cached_images);
-            var result = [];
-            for (var i = 0; i < 5; i++) {
-                result.push(cached_images[keys[Math.floor(Math.random() * keys.length)]]);
-            }
-            res.send(result);
+            res.send(getFiveImg(id_array, cached_images));
         });
 
         app.get('/images/:id', function(req, res) {
