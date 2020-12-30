@@ -1,8 +1,8 @@
-var express = require('express');
-var app = express();
-var path = require('path');
-var https = require('https');
-var fs = require('fs');
+const express = require('express');
+const app = express();
+const path = require('path');
+const https = require('https');
+const fs = require('fs');
 const hbs = require('hbs');
 const { getFiveImg } = require('./utils/helper');
 
@@ -29,13 +29,12 @@ var url = 'https://picsum.photos/v2/list?page=1&limit=100';
 var cached_images = {};
 var id_array = [];
 
-https.get(url, function(res){
+https.get(url, async (res) => {
     var body = '';
-
-    res.on('data', function(chunk){
+    res.on('data', async (chunk) => {
         body += chunk;
     });
-    res.on('end', function(){
+    res.on('end', async () => {
         var response = JSON.parse(body);
         for (var i = 0; i < response.length; i++) {
             cached_images[response[i].id] = {
@@ -47,26 +46,27 @@ https.get(url, function(res){
             };
         }
         id_array = Object.keys(cached_images);
-        console.log('get images data')
+        //cache.addAll(cached_images);
+        console.log('get images data');
         
-        app.get('/getNextChunk', function (req, res) {
+        app.get('/getNextChunk', async (req, res) => {
             res.render('home', {images: getFiveImg(id_array, cached_images)});
         })
 
-        app.get('/images', function(req, res) {
+        app.get('/images', async (req, res) => {
             res.send(getFiveImg(id_array, cached_images));
         });
 
-        app.get('/images/:id', function(req, res) {
+        app.get('/images/:id', async (req, res) => {
             if (cached_images.hasOwnProperty(req.params.id)) {
                 res.send(cached_images[req.params.id]);
             } else {
-                res.send({"error": "Image not found"})
+                res.send({"error": "Image not found"});
             }
         });
         app.listen(port, () => {
-            console.log('Server is up on port ' + port)
-        })
+            console.log('Server is up on port ' + port);
+        });
     });
     res.on('error', function(e){
         console.log("Got an error: ", e);

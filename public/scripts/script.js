@@ -22,13 +22,11 @@ function nextSlide() {
   } else {
     slideIndex++;
   }
-
   slideImages(slideIndex);
 }
 
 function showSlide(event) {
   let n = event.target.parentElement.id;
-
   slideImages(n);
 }
 
