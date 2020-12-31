@@ -51,10 +51,10 @@ https.get(url, async (res) => {
         
         app.get('/getNextChunk', async (req, res) => {
             res.render('home', {images: getFiveImg(id_array, cached_images)});
-        })
+        });
 
         app.get('/images', async (req, res) => {
-            res.send(getFiveImg(id_array, cached_images));
+            res.send({ images : cached_images });
         });
 
         app.get('/images/:id', async (req, res) => {

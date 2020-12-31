@@ -6,6 +6,7 @@
     {{!-- <meta http-equiv="refresh" content="30"> --}}
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
     <script type="module" src="../scripts/script.js"></script>
+
 </head>
 <body>
     <h2>Vanilla Gallery</h2>
@@ -35,7 +36,7 @@
     <div class="thumb-bar">
         {{#each images}}
         <div id="{{@index}}" class="thumb-img">
-        <img class="dem cursor" src="{{download_url}}" alt="{{author}}" >
+            <img class="dem cursor" src="{{download_url}}" alt="{{author}}" >
         </div>
         {{/each}}
     </div>
