@@ -4,11 +4,9 @@ const thumbnails = document.querySelectorAll('.thumb-img img');
 const captionText = document.getElementById('caption');
 const prev = document.querySelector('.prev');
 const next = document.querySelector('.next');
-const url_images = 'http://localhost:3000/images';
-const cacheName = 'website-cache';
 let slideIndex = 0;
 
-//document.getElementById("imageid").src="../template/save.png";
+
 function prevSlide() {
   if (slideIndex < 1) {
     slideIndex = slides.length - 1;
@@ -58,25 +56,25 @@ window.onload = caches.delete(cacheName).then(() => {
   console.log('Cache deleted');
 });
 
-setInterval(function(){
-  reloadNewFiveImg()
-}, 30000);
+// setInterval(function(){
+//   reloadNewFiveImg()
+// }, 30000);
 
-function reloadNewFiveImg() {
-  alert("Loading new random images.");
-  console.log("Loading new random images.");
-  fetch("http://localhost:3000/images").then(response => response.json())
-  .then(data => {
-      let randomNum, index = Object.keys(data['images']);
-      for(let i = 0; i < 5; i++) {
-          randomNum = index[Math.floor(Math.random() * index.length)];
-          slides_img[i].src = data['images'][randomNum]['download_url'];
-          thumbnails[i].src = data['images'][randomNum]['download_url'];
-          index.splice(randomNum, 1);
-      }
-  })
-  .catch(console.error);
-};
+// function reloadNewFiveImg() {
+//   alert("Loading new random images.");
+//   console.log("Loading new random images.");
+//   fetch("https://vanilla-gallery-beker.herokuapp.com/images").then(response => response.json())
+//   .then(data => {
+//       let randomNum, index = Object.keys(data['images']);
+//       for(let i = 0; i < 5; i++) {
+//           randomNum = index[Math.floor(Math.random() * index.length)];
+//           slides_img[i].src = data['images'][randomNum]['download_url'];
+//           thumbnails[i].src = data['images'][randomNum]['download_url'];
+//           index.splice(randomNum, 1);
+//       }
+//   })
+//   .catch(console.error);
+// };
 
 
 
