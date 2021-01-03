@@ -35,7 +35,7 @@ Installation & Run
 3. Run the application: <br />
 ```npm start```
 
-4. Open url http://localhost:3000/getNextChunk in your browser.
+4. Open url http://localhost:3000/ in your browser.
 
 Endpoints
 ---
