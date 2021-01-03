@@ -3,17 +3,15 @@
 <head>
     <title>vanilla-gallery</title>
 	<link rel="icon" href="../img/gallery.png">
-    {{!-- <meta http-equiv="refresh" content="30"> --}}
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
     <script type="module" src="../scripts/script.js"></script>
-
 </head>
 <body>
     <h2>Vanilla Gallery</h2>
     <div class="container">
          {{#each images}}
             <div class="slide">
-                <div class="numbertext" >
+                <div class="numbertext">
                     <script>
                         document.write({{@index}} + 1)
                     </script>
@@ -24,10 +22,10 @@
 	    {{/each}}
     
     <!-- Image text -->
-    <div class="caption-container">
-        <p id="caption"></p>
+    <div class="caption-container overlay">
+        <p id="caption" class="author-name"></p>
     </div>
-    
+
     <!-- Next and previous button -->
     <a class="prev">&#10094;</a>
     <a class="next">&#10095;</a>

@@ -1,3 +1,4 @@
+const SEC_RELOAD_NEW_IMAGES = 30000;
 const slides = document.querySelectorAll('.slide');
 const slides_img = document.querySelectorAll('.slide img');
 const thumbnails = document.querySelectorAll('.thumb-img img');
@@ -5,7 +6,6 @@ const captionText = document.getElementById('caption');
 const prev = document.querySelector('.prev');
 const next = document.querySelector('.next');
 let slideIndex = 0;
-
 
 function prevSlide() {
   if (slideIndex < 1) {
@@ -52,29 +52,25 @@ thumbnails.forEach(thumbnail => thumbnail.addEventListener('click', showSlide));
 
 slideImages(slideIndex);
 
-window.onload = caches.delete(cacheName).then(() => {
-  console.log('Cache deleted');
-});
+setInterval(async function(){
+  await reloadNewFIveImg();
+}, SEC_RELOAD_NEW_IMAGES);
 
-// setInterval(function(){
-//   reloadNewFiveImg()
-// }, 30000);
+async function reloadNewFIveImg() {
+  console.log("API provide 5 random elements");
+  fetch("/getNextChunk").then(response => response.json())
+  .then(data => {
+    getRandomImg(data);
+  })
+    .catch(console.error);
+}; 
 
-// function reloadNewFiveImg() {
-//   alert("Loading new random images.");
-//   console.log("Loading new random images.");
-//   fetch("https://vanilla-gallery-beker.herokuapp.com/images").then(response => response.json())
-//   .then(data => {
-//       let randomNum, index = Object.keys(data['images']);
-//       for(let i = 0; i < 5; i++) {
-//           randomNum = index[Math.floor(Math.random() * index.length)];
-//           slides_img[i].src = data['images'][randomNum]['download_url'];
-//           thumbnails[i].src = data['images'][randomNum]['download_url'];
-//           index.splice(randomNum, 1);
-//       }
-//   })
-//   .catch(console.error);
-// };
-
-
+function getRandomImg(JSON_data) {
+  console.log("Retrieve the new data and bind it to a view");
+  let cache_data = JSON_data['images'];
+  for(let i = 0; i < 5; i++) {
+      slides_img[i].src = cache_data[i].download_url;
+      thumbnails[i].src = cache_data[i].download_url;
+    }
+  }
 

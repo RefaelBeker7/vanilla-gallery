@@ -3,8 +3,9 @@
   }
   
   body {
-	background-color: #797485;
+  	background-color: #797485;
     font-family: Arial;
+    margin: 0;
   }
   
   h2 {
@@ -27,7 +28,9 @@
   .slide img {
     width: 100%;
     height: 400px;
-    vertical-align: middle;
+    display: block;
+    object-fit: cover;
+    /* vertical-align: middle; */
   }
   
   /* Number text */
@@ -81,6 +84,8 @@
   
   .thumb-img {
     width: 16.66%;
+    display: block;
+    object-fit: cover;
   }
   
   .thumb-img img {
@@ -100,3 +105,31 @@
   .active, .dem:hover {
     opacity: 1;
   }
+
+ /* slide-up hover effect/ */
+ .overlay {
+  position: absolute;
+  bottom: 19%;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  transition: .5s ease;
+}
+
+.container:hover .overlay {
+  height: 15%;
+}
+
+.author-name {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}

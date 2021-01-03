@@ -4,7 +4,6 @@ const path = require('path');
 const https = require('https');
 const fs = require('fs');
 const hbs = require('hbs');
-const { getFiveImg } = require('./utils/helper');
 
 const port = process.env.PORT || 3000;
 
@@ -27,14 +26,14 @@ app.use(express.static(publicDirectoryPath));
 */
 var url = 'https://picsum.photos/v2/list?page=1&limit=100';
 var cached_images = {};
-var id_array = [];
+var id_keys = [];
 
 https.get(url, async (res) => {
     var body = '';
-    res.on('data', async (chunk) => {
+    res.on('data', (chunk) => {
         body += chunk;
     });
-    res.on('end', async () => {
+    await res.on('end', async () => {
         var response = JSON.parse(body);
         for (var i = 0; i < response.length; i++) {
             cached_images[response[i].id] = {
@@ -45,19 +44,30 @@ https.get(url, async (res) => {
                 "download_url": response[i].download_url
             };
         }
-        id_array = Object.keys(cached_images);
-        //cache.addAll(cached_images);
+        id_keys = Object.keys(cached_images);
         console.log('get images data');
-        
+
+        app.get('/home2', async (req, res) => {    
+            await res.render('home2');
+        });
+
+        app.get('/', async (req, res) => {    
+            checkKeysImg(cached_images);
+            console.log(id_keys.length);
+            await res.render('home', { images: getFiveRandomImg(id_keys, cached_images) });
+        });
+
         app.get('/getNextChunk', async (req, res) => {
-            res.render('home', {images: getFiveImg(id_array, cached_images)});
+            checkKeysImg(cached_images);
+            console.log(id_keys.length);
+            await res.send({ images: getFiveRandomImg(id_keys, cached_images) });
         });
 
         app.get('/images', async (req, res) => {
-            res.send({ images : cached_images });
+            await res.send({ images : cached_images });
         });
 
-        app.get('/images/:id', async (req, res) => {
+        app.get('/images/:id', (req, res) => {
             if (cached_images.hasOwnProperty(req.params.id)) {
                 res.send(cached_images[req.params.id]);
             } else {
@@ -75,3 +85,27 @@ https.get(url, async (res) => {
       console.log("Got an error: ", e);
 });
 
+function getFiveRandomImg(index, images) {
+    let random_num, result = [], random_index;
+    for (let i = 0; i < 5; i++) {
+        random_index = Math.floor(Math.random() * index.length);
+        random_num = index[random_index];
+        result.push(images[random_num]);
+        index.splice(random_index, 1);
+    }     
+    return result;
+}
+
+function isEmptyKeysImg(keys, imgs) {
+    if (keys.length || keys === null) {
+        return false;
+    }
+    return true;
+}
+
+function checkKeysImg(imgs) {
+    if (isEmptyKeysImg(id_keys, imgs)) {
+        id_keys = Object.keys(imgs);
+    }
+    return;
+}
