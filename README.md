@@ -2,7 +2,7 @@
 Simple mini gallery project using nothing but HTML5, CSS & JavaScript. No JS or CSS frameworks, no libraries, etc.
 
 ### Heroku link
-https://vanilla-gallery-beker.herokuapp.com/getNextChunk
+https://vanilla-gallery-beker.herokuapp.com/
 
 
 ### Each image element schema contains: 
