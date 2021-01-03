@@ -40,20 +40,26 @@ Installation & Run
 Endpoints
 ---
 
-### /getNextChunk
+### /
 
 - Methods: **GET**
 - Description: Gallery application
 
+
+### /getNextChunk
+
+- Methods: **GET**
+- Description: Retrieve 5 random images in JSON
+
 ### /images
 
 - Methods: **GET**
-- Description: Return 100 images in JSON
+- Description: Retrieve 100 images in JSON
 
 ### /images/id
 
 - Methods: **GET**
-- Description: Return a image by id in JSON
+- Description: Retrieve a image by id in JSON
 
 Screenshot
 ---
